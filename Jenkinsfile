@@ -3,6 +3,11 @@ pipeline {
   agent any
 
   stages {
+    stage("Clean workspace") {
+      steps{
+        cleanWS()
+      }
+    }
     stage("checkout code") {
       steps{
         echo "checking out code from github..."
