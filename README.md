@@ -89,6 +89,45 @@ Semgrep ran 94 rules on 17 files and flagged **0 findings** — despite hardcode
 ```
 Despite injecting secrets, they didn't show up in the scan. There's limited number of rules in the free tier. I probably need to upgrade to a paid one or make custom rules.
 ---
+## SCA — Dependency Audit (`pip-audit`)
+
+`pip-audit` scanned `requirements.txt` and found **17 known vulnerabilities across 4 packages**, causing the pipeline to fail and the Security Gate to be skipped.
+
+| Package | Version | CVE/ID | Fix Version |
+|---|---|---|---|
+| flask | 2.3.3 | GHSA-68rp-wp8r-4726 | 3.1.3 |
+| requests | 2.18.0 | PYSEC-2018-28 | 2.20.0 |
+| requests | 2.18.0 | PYSEC-2023-74 | 2.31.0 |
+| requests | 2.18.0 | GHSA-9wx4-h78v-vm56 | 2.32.0 |
+| requests | 2.18.0 | GHSA-9hjg-9r4m-mvj7 | 2.32.4 |
+| idna | 2.5 | PYSEC-2024-60 | 3.7 |
+| urllib3 | 1.21.1 | PYSEC-2021-108 | 1.26.5 |
+| urllib3 | 1.21.1 | PYSEC-2018-32 | 1.23 |
+| urllib3 | 1.21.1 | PYSEC-2019-133 | 1.24.2 |
+| urllib3 | 1.21.1 | PYSEC-2019-132 | 1.24.3 |
+| urllib3 | 1.21.1 | PYSEC-2020-148 | 1.25.9 |
+| urllib3 | 1.21.1 | PYSEC-2023-192 | 1.26.17, 2.0.6 |
+| urllib3 | 1.21.1 | PYSEC-2023-207 | 1.24.2 |
+| urllib3 | 1.21.1 | PYSEC-2023-212 | 1.26.18, 2.0.7 |
+| urllib3 | 1.21.1 | GHSA-34jh-p97f-mpxf | 1.26.19, 2.2.2 |
+| urllib3 | 1.21.1 | GHSA-pq67-6m6q-mj2v | 2.5.0 |
+| urllib3 | 1.21.1 | GHSA-2xpw-w6gg-jr37 | 2.6.0 |
+
+---
+## Security Gate
+
+The security gate is the final stage of the pipeline. It only runs if all prior security checks (SAST, secrets scan, SCA) pass. If any stage fails, Jenkins skips the gate and blocks deployment.
+
+From the Jenkins output:
+```
+Stage "Security gate" skipped due to earlier failure(s)
+SECURITY GATE FAILED — deployment blocked. Fix all findings before merging.
+Finished: FAILURE
+```
+
+The SCA stage failed due to vulnerable dependencies, which triggered the gate and blocked the pipeline — demonstrating the intended behavior.
+
+---
 ## The Pipeline
 [diagram of Jenkins stages]
 
