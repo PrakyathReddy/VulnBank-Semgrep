@@ -36,6 +36,15 @@ pipeline {
           """
       }
     }
+    stage("Check for exposed secrets") {
+      steps{
+        echo "checking for exposed secrets..."
+        sh """
+          . venv/bin/activate
+          semgrep scan --config p/secrets .
+        """
+      }
+    }
   }
 
 }
