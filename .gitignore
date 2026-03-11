@@ -1,1 +1,8 @@
 CLAUDE.md
+bank.db
+static/uploads/*
+!static/uploads/.gitkeep
+__pycache__/
+*.pyc
+.env
+venv/
