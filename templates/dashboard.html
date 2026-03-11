@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %} — Dashboard{% endblock %}
+
+{% block content %}
+<h4 class="mb-3">Welcome back, {{ session.username }}</h4>
+
+<div class="row mb-4">
+  {% for acct in accounts %}
+  <div class="col-md-4 mb-3">
+    <div class="card p-3">
+      <div class="text-muted small">Account #{{ acct.id }}</div>
+      <div class="fs-3 fw-bold text-success">${{ "%.2f"|format(acct.balance) }}</div>
+      <a href="/account/{{ acct.id }}" class="btn btn-sm btn-outline-secondary mt-2">View Details</a>
+    </div>
+  </div>
+  {% else %}
+  <div class="col"><p class="text-muted">No accounts found.</p></div>
+  {% endfor %}
+</div>
+
+<h5>Recent Transactions</h5>
+<div class="card">
+  <table class="table mb-0">
+    <thead class="table-light">
+      <tr>
+        <th>#</th><th>From</th><th>To</th><th>Amount</th><th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in txns %}
+      <tr>
+        <td>{{ t.id }}</td>
+        <td>Acct #{{ t.from_acct }}</td>
+        <td>Acct #{{ t.to_acct }}</td>
+        <td>${{ "%.2f"|format(t.amount) }}</td>
+        <td>{{ t.ts }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="text-muted text-center">No transactions yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

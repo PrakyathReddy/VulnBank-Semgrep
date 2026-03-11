@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} — Upload Statement{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card p-4">
+      <h5 class="mb-3">Upload Bank Statement</h5>
+      <form method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label class="form-label">Select file</label>
+          <input type="file" name="statement" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Upload</button>
+      </form>
+
+      {% if output %}
+      <hr>
+      <h6>File Info</h6>
+      <pre class="bg-light p-2 rounded small">{{ output }}</pre>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
