@@ -23,11 +23,13 @@ pipeline {
     }
     stage("Semgrep scan") {
       steps{
-        echo "running semgrep security scan..."
-        sh """
-          . venv/bin/activate 
-          semgrep scan --config auto --severity ERROR --verbose app/
-        """
+        dir('/var/jenkins_home/workspace/semgrep integration') {
+          echo "running semgrep security scan..."
+          sh """
+            . venv/bin/activate 
+            semgrep scan --config auto --severity ERROR --verbose app/
+          """
+        }
       }
     }
   }
