@@ -41,7 +41,7 @@ pipeline {
         echo "checking for exposed secrets..."
         sh """
           . venv/bin/activate
-          semgrep scan --config p/secrets .
+          semgrep scan --config p/secrets --verbose .
         """
       }
     }
