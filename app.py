@@ -108,9 +108,10 @@ def login():
 
         db = get_db()
         # Vulnerability: SQL Injection — user input concatenated directly into query
+        hashed = hashlib.md5(password.encode()).hexdigest()
         query = (
             f"SELECT * FROM users WHERE username = '{username}' "
-            f"AND password = '{password}'"
+            f"AND password = '{hashed}'"
         )
         user = db.execute(query).fetchone()
 
