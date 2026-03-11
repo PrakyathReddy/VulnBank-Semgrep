@@ -25,7 +25,9 @@ how Semgrep catches security issues automatically in Jenkins.
 - Hardcoded Secrets (admin credentials) — app.py:10-12                                                                                             
   app.secret_key = "supersecretkey123"                                                                                               
   ADMIN_USERNAME = "admin"                                                                                                            
-  ADMIN_PASSWORD = "admin123"                                                                                                        
+  ADMIN_PASSWORD = "admin123"
+  AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE"
+  AWS_SECRET_ACCESS_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"                                                                                              
   Admin credentials and Flask session secret hardcoded in source.
   
 - Weak Cryptography (MD5 password reset tokens) — app.py:249 <br>
