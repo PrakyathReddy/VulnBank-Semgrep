@@ -32,7 +32,7 @@ pipeline {
             pwd
             ls
             . venv/bin/activate 
-            semgrep scan --config auto --severity ERROR --verbose app/
+            semgrep scan --config auto --severity ERROR --verbose .
           """
       }
     }
