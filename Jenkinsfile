@@ -25,7 +25,8 @@ pipeline {
       steps{
         echo "running semgrep security scan..."
         sh """
-          . venv/bin/activate semgrep scan --configure auto --severity ERROR --verbose app/
+          . venv/bin/activate 
+          semgrep scan --configure auto --severity ERROR --verbose app/
         """
       }
     }
