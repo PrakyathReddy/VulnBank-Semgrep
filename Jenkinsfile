@@ -21,7 +21,7 @@ pipeline {
         """
       }
     }
-    stage {
+    stage("Semgrep scan") {
       steps{
         echo "running semgrep security scan..."
         sh """
