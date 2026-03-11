@@ -44,6 +44,16 @@ how Semgrep catches security issues automatically in Jenkins.
 ![Dashboard](static/images/post-login.png)
 
 ---
+### Jenkins setup
+1. Start docker engine through Docker Desktop
+2. pull container for jenkins: $ docker pull jenkins/jenkins
+3. run container for jenkins: $ docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins jenkins/jenkins:latest
+
+
+
+
+
+
 ## What Semgrep Catches
 [screenshot of Jenkins pipeline failure]
 [screenshot of inline finding with exact line]
