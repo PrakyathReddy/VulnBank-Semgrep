@@ -55,8 +55,26 @@ how Semgrep catches security issues automatically in Jenkins.
 
 
 ## What Semgrep Catches
-[screenshot of Jenkins pipeline failure]
-[screenshot of inline finding with exact line]
+
+Semgrep ran 128 rules on 17 files and flagged **4 blocking findings**:
+
+| Rule | File | Line | Description |
+|---|---|---|---|
+| `python.django.security.injection.tainted-sql-string` | app.py | 113 | User input concatenated into raw SQL query (SQL Injection) |
+| `python.flask.security.injection.tainted-sql-string` | app.py | 113 | User input concatenated into raw SQL query (SQL Injection, Flask-specific) |
+| `python.flask.security.injection.nan-injection` | app.py | 175 | User input passed directly into `float()` typecast (NaN injection) |
+| `python.lang.security.audit.subprocess-shell-true` | app.py | 228 | `subprocess.run` called with `shell=True` (Command Injection) |
+
+```
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings:        4 (4 blocking)
+ • Rules run:       128
+ • Targets scanned: 17
+ • Parsed lines:    ~100.0%
+```
 
 ## The Pipeline
 [diagram of Jenkins stages]
