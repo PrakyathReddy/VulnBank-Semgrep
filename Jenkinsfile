@@ -13,7 +13,6 @@ pipeline {
       steps{
         echo "installing dependencies..."
         sh """
-          
           python3 -m venv venv
           . venv/bin/activate
           pip install -r requirements.txt
@@ -26,6 +25,8 @@ pipeline {
         dir('/var/jenkins_home/workspace/semgrep integration') {
           echo "running semgrep security scan..."
           sh """
+            pwd
+            ls
             . venv/bin/activate 
             semgrep scan --config auto --severity ERROR --verbose app/
           """
