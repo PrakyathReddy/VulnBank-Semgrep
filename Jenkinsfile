@@ -34,7 +34,6 @@ pipeline {
             . venv/bin/activate 
             semgrep scan --config auto --severity ERROR --verbose app/
           """
-        }
       }
     }
   }
