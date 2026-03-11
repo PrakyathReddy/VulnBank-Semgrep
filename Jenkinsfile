@@ -27,7 +27,6 @@ pipeline {
     }
     stage("Semgrep scan") {
       steps{
-        dir('/var/jenkins_home/workspace/semgrep integration') {
           echo "running semgrep security scan..."
           sh """
             pwd
