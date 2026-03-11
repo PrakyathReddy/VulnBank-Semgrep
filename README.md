@@ -87,7 +87,7 @@ Semgrep ran 94 rules on 17 files and flagged **0 findings** — despite hardcode
  • Targets scanned: 17
  • Parsed lines:    ~100.0%
 ```
-
+Despite injecting secrets, they didn't show up in the scan. There's limited number of rules in the free tier. I probably need to upgrade to a paid one or make custom rules.
 ---
 ## The Pipeline
 [diagram of Jenkins stages]
