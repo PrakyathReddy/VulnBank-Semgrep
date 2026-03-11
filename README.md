@@ -50,12 +50,7 @@ how Semgrep catches security issues automatically in Jenkins.
 1. Start docker engine through Docker Desktop
 2. pull container for jenkins: $ docker pull jenkins/jenkins
 3. run container for jenkins: $ docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins jenkins/jenkins:latest
-
-
-
-
-
-
+---
 ## What Semgrep Catches
 
 Semgrep ran 128 rules on 17 files and flagged **4 blocking findings**:
@@ -77,7 +72,10 @@ Semgrep ran 128 rules on 17 files and flagged **4 blocking findings**:
  • Targets scanned: 17
  • Parsed lines:    ~100.0%
 ```
+---
+### Secrets scan
 
+---
 ## The Pipeline
 [diagram of Jenkins stages]
 
