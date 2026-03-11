@@ -73,7 +73,20 @@ Semgrep ran 128 rules on 17 files and flagged **4 blocking findings**:
  • Parsed lines:    ~100.0%
 ```
 ---
-### Secrets scan
+### Secrets Scan (`p/secrets`)
+
+Semgrep ran 94 rules on 17 files and flagged **0 findings** — despite hardcoded credentials in `app.py` (Flask secret key, admin password, dummy AWS keys). This demonstrates a key limitation of pattern-based secret detection: the `p/secrets` ruleset focuses on recognizable secret formats (API keys, tokens with specific patterns) and may miss generic variable assignments like `ADMIN_PASSWORD = "admin123"`.
+
+```
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings:        0 (0 blocking)
+ • Rules run:       94
+ • Targets scanned: 17
+ • Parsed lines:    ~100.0%
+```
 
 ---
 ## The Pipeline
