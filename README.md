@@ -37,6 +37,12 @@ how Semgrep catches security issues automatically in Jenkins.
   requests==2.18.0 <br>
   Pinned to an old version with known CVEs (e.g. CVE-2018-18074 — credential exposure via redirect). <br>
 
+## App Screenshots
+
+![Login Page](static/images/login%20page.png)
+
+![Dashboard](static/images/post-login.png)
+
 ---
 ## What Semgrep Catches
 [screenshot of Jenkins pipeline failure]
